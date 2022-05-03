@@ -575,10 +575,12 @@ $maxWidth: 1440;
 	display: flex;
 	&_pic {
 		margin-bottom: 15px;
+		text-align: center;
 	}
 
 	&_title {
 		margin-bottom: 10px;
+		text-align: center;
 	}
 	&__container {
 		position: relative;
@@ -760,8 +762,7 @@ $maxWidth: 1440;
 		@include adaptiv-font(40, 26);
 		line-height: 1;
 		margin-bottom: 50px;
-		// text-align: justify;
-		text-align: center;
+		text-align: justify;
 	}
 
 	&__subtitle {
@@ -769,7 +770,7 @@ $maxWidth: 1440;
 		font-weight: 600;
 		@include adaptiv-font(30, 20);
 		line-height: 1;
-		text-align: center;
+		text-align: justify;
 	}
 
 	&__content {
@@ -1060,22 +1061,15 @@ $maxWidth: 1440;
 			'death '
 			'legacy';
 	}
-	.facts_pic {
-		img {
-			margin: 0 auto;
-			display: block;
-		}
-	}
 
-	.facts_title {
-		text-align: center;
-	}
 	.form__title {
 		font-weight: 400;
+		text-align: center;
 	}
 
 	.form__subtitle {
 		font-weight: 400;
+		text-align: center;
 	}
 
 	.field-label {
