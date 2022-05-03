@@ -139,7 +139,7 @@ $maxWidth: 1440;
 			&_subtitle {
 				@include adaptiv-font(18, 16);
 				max-width: 700px;
-				text-align: left;
+				text-align: justify;
 				margin: 0 0 20px 0;
 			}
 		}
@@ -535,7 +535,7 @@ $maxWidth: 1440;
 			}
 			&-text {
 				max-width: 700px;
-				text-align: left;
+				text-align: justify;
 				padding: 0 50px 0 0;
 			}
 		}
@@ -622,19 +622,32 @@ $maxWidth: 1440;
 	&__life {
 		grid-area: life;
 		padding-top: 15px;
+
+		&-subtitle {
+			text-align: justify;
+		}
 	}
 
 	&__teo {
 		grid-area: teo;
 		padding-top: 15px;
+		&-subtitle {
+			text-align: justify;
+		}
 	}
 
 	&__death {
 		grid-area: death;
+		&-subtitle {
+			text-align: justify;
+		}
 	}
 
 	&__legacy {
 		grid-area: legacy;
+		&-subtitle {
+			text-align: justify;
+		}
 	}
 }
 .video {
@@ -739,6 +752,7 @@ $maxWidth: 1440;
 		display: flex;
 		padding: 100px 0 100px 0;
 		justify-content: space-between;
+		// text-align: justify;
 	}
 
 	&__title {
@@ -1043,6 +1057,7 @@ $maxWidth: 1440;
 			'sm-3'
 			'sm-4'
 			'sm-5' !important;
+		row-gap: 10px !important;
 	}
 
 	.facts__row {
@@ -1052,5 +1067,29 @@ $maxWidth: 1440;
 			' teo'
 			'death '
 			'legacy';
+	}
+
+	.form__title {
+		font-weight: 400;
+	}
+
+	.form__subtitle {
+		font-weight: 400;
+	}
+
+	.field-label {
+		font-weight: 400;
+		color: $text;
+	}
+
+	.museum-group__title {
+		font-weight: 400;
+		color: $text;
+	}
+
+	.form-queue__group-button {
+		font-weight: 400;
+		background-color: $yellow;
+		color: $white;
 	}
 }
