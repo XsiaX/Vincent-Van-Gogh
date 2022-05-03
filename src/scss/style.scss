@@ -1,0 +1,1119 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,800;0,900;1,400&display=swap');
+@import '_reset.scss';
+
+// Palette
+@import '_palette.scss';
+
+$maxWidth: 1440;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize + $addSize * 0.7;
+
+	@media (max-width: 767px) {
+		font-size: calc(
+			#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth})
+		);
+	}
+	@media (min-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+	}
+}
+// Шаблоны
+%animShow {
+	opacity: 0;
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 70, 0, 1);
+	transition: 0.3s;
+	&._active,
+	._active & {
+		opacity: 1;
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	}
+}
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+.main {
+	flex: 1 1 auto;
+	color: $text;
+	line-height: 26px;
+
+	/* Intro styles start*/
+	.intro {
+		&__container {
+			min-height: 100vh;
+			background: url('/img/intro_bg.jpg') no-repeat;
+			background-size: cover;
+			background-attachment: fixed;
+			box-sizing: content-box;
+			padding: 0 15px;
+			margin: 0 auto;
+			position: relative;
+			&::before {
+				content: ' ';
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				position: absolute;
+				background-color: $purple_overlay;
+				z-index: 1;
+			}
+		}
+
+		&__row {
+			display: flex;
+			flex-direction: column;
+			max-width: 500px;
+			margin: 0 auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			// margin-left: auto;
+			// margin-right: auto;
+			text-align: center;
+			color: $white;
+			z-index: 2;
+			padding: 100px 0 100px 0;
+		}
+
+		&__title {
+			@include adaptiv-font(70, 50);
+			font-weight: 900;
+			margin: 0 0 20px 0;
+			line-height: 1;
+		}
+
+		&__subtitle {
+			@include adaptiv-font(20, 17);
+			font-size: 20px;
+			// width: 500px;
+			font-style: italic;
+			letter-spacing: 1px;
+			line-height: 2;
+		}
+	}
+	/* Intro styles end */
+
+	/* Bio styles start*/
+	.bio {
+		&__container {
+			max-width: 1170px;
+			box-sizing: content-box;
+			padding: 0 15px;
+			margin: 0 auto;
+		}
+
+		&__row {
+			display: flex;
+			padding: 100px 0 100px 0;
+			justify-content: space-between;
+		}
+
+		&__column {
+			&_t {
+			}
+
+			&_title {
+				text-align: right;
+				font-size: 28px;
+				font-weight: 800;
+				color: $purple;
+				position: relative;
+				&::after {
+					content: '';
+					width: 25%;
+					height: 5px;
+					right: 0;
+					bottom: -40px;
+					position: absolute;
+					background-color: $purple_light;
+				}
+			}
+
+			&_s {
+			}
+
+			&_subtitle {
+				@include adaptiv-font(18, 16);
+
+				max-width: 700px;
+				text-align: left;
+				margin: 0 0 20px 0;
+			}
+		}
+	}
+
+	.btn {
+		background: linear-gradient(
+			to right,
+			$purple 0%,
+			#a395d7e7 50%,
+			$blue 100%
+		);
+		background-size: 400%;
+		border-radius: 20px;
+		color: $white;
+		cursor: pointer;
+		border: none;
+		height: 65px;
+		width: 100%;
+	}
+
+	.btn:hover {
+		animation-name: gradient;
+		animation-duration: 2s;
+		animation-iteration-count: 1;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		100% {
+			background-position: 100%;
+		}
+	}
+	/* Bio styles end*/
+
+	/* Sunflower styles start*/
+	.sunflower {
+		&__container {
+		}
+
+		&__row {
+			display: grid;
+			grid-template: repeat(2, 500px) / repeat(4, 1fr);
+			grid-template-areas:
+				'lg-1 lg-1 sm-2 sm-3'
+				'sm-4 sm-5 lg-2 lg-2';
+		}
+		&__wrap-lg-1 {
+			grid-area: lg-1;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 0.6s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 0.6s;
+			}
+
+			&:hover::after {
+				content: 'Four Cut Sunflowers/Four sunflowers gone to seed';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Парижская серия, 1887 год.';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+
+		&__wrap-sm-2 {
+			grid-area: sm-2;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 0.7s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 0.7s;
+			}
+
+			&:hover::after {
+				content: 'Vase with Five Sunflowers';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Серия из Арля, 1888 год. ';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+
+		&__wrap-sm-3 {
+			grid-area: sm-3;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 0.8s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 0.8s;
+			}
+
+			&:hover::after {
+				content: 'Still Life: Vase with Twelve Sunflowers';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Серия из Арля, 1888 год. ';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+
+		&__wrap-sm-4 {
+			grid-area: sm-4;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 0.9s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 0.9s;
+			}
+
+			&:hover::after {
+				content: 'Vase with twelve sunflowers';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Серия из Арля, 1888/1889 года. ';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+
+		&__wrap-sm-5 {
+			grid-area: sm-5;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 1s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 1s;
+			}
+
+			&:hover::after {
+				content: 'Vase with Fifteen Sunflowers';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Серия из Арля, 1889 год. ';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+
+		&__wrap-lg-6 {
+			grid-area: lg-2;
+			position: relative;
+			overflow: hidden;
+			&._active,
+			._active & {
+				transition: opacity 1.5s cubic-bezier(0, 0, 0.2, 1) 1.1s,
+					transform 1.5s cubic-bezier(0, 0, 0.2, 1) 1.1s;
+			}
+
+			&:hover::after {
+				content: 'Sunflower';
+				opacity: 1;
+			}
+			&::after {
+				content: '';
+				text-align: center;
+				font-size: 30px;
+				color: $white;
+				opacity: 0;
+				width: 100%;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+
+			&:hover::before {
+				content: 'Парижская серия, 1887 год.';
+				opacity: 1;
+			}
+			&::before {
+				content: '';
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+				color: $white;
+				opacity: 0;
+				position: absolute;
+				top: 310px;
+				left: 0;
+				z-index: 4;
+				transition: 0.4s;
+			}
+		}
+	}
+
+	.lg-pic {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: 0.4s;
+		opacity: 0.9;
+		&:hover {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+	}
+	.sm-pic {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: 0.4s;
+		opacity: 0.9;
+		&:hover {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+	}
+
+	._anim-show {
+		@extend %animShow;
+	}
+}
+/* Sunflower style end*/
+
+/* Life styles start*/
+.life {
+	&__container {
+		max-width: 1170px;
+		box-sizing: content-box;
+		padding: 0 15px;
+		margin: 0 auto;
+	}
+
+	&__row {
+		display: flex;
+		padding: 100px 0 100px 0;
+		justify-content: space-between;
+	}
+
+	&__column {
+		&_t {
+			padding: 0 0 20px 0;
+			position: relative;
+			&::before {
+				content: '';
+				width: 25%;
+				height: 5px;
+				left: 0;
+				bottom: 50%;
+				position: absolute;
+				background-color: $blue_light;
+			}
+			&-text {
+				max-width: 700px;
+				text-align: left;
+				padding: 0 50px 0 0;
+			}
+		}
+
+		&_p {
+			position: relative;
+			min-width: 400px;
+			height: 450px;
+
+			&::after {
+				content: 'Винсент Ван Гог';
+				position: absolute;
+				bottom: -30px;
+				left: 30%;
+				color: $black;
+				font-size: 16px;
+			}
+			&-port {
+				img {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					left: 0;
+					top: 0;
+					object-fit: cover;
+					// box-sizing: content-box;
+					// padding: 0 15px;
+				}
+			}
+		}
+	}
+}
+/* Life styles end*/
+
+/* Facts styles start*/
+.facts {
+	min-height: 700px;
+
+	position: relative;
+	display: flex;
+	&_pic {
+		margin-bottom: 15px;
+	}
+
+	&_title {
+		margin-bottom: 10px;
+	}
+	&__container {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex: 1 1 auto;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&__row {
+		position: relative;
+		color: $white;
+		margin: 35px 35px;
+		display: grid;
+
+		background-color: $black_light;
+		grid-template: repeat(2, minmax(250px, 400)) / repeat(
+				4,
+				minmax(200px, 350px)
+			);
+		grid-template-areas:
+			'title title life teo'
+			'title title death legacy';
+		justify-content: center;
+		gap: 10px;
+		padding: 15px 15px;
+		@include adaptiv-font(18, 16);
+	}
+
+	&__title {
+		display: flex;
+		grid-area: title;
+		@include adaptiv-font(50, 30);
+
+		line-height: 1;
+		text-align: center;
+		align-items: center;
+		font-weight: 600;
+	}
+
+	&__life {
+		grid-area: life;
+		padding-top: 15px;
+
+		&-subtitle {
+		}
+	}
+
+	&__teo {
+		grid-area: teo;
+		padding-top: 15px;
+
+		&-subtitle {
+		}
+	}
+
+	&__death {
+		grid-area: death;
+
+		&-subtitle {
+		}
+	}
+
+	&__legacy {
+		grid-area: legacy;
+
+		&-subtitle {
+		}
+	}
+}
+.video {
+	&__bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -100;
+	}
+}
+/* Facts styles end*/
+
+/* Quotes styles start*/
+.slider {
+	display: flex;
+	justify-content: center;
+
+	&__container {
+		position: relative;
+		max-width: 600px;
+		overflow: hidden;
+	}
+
+	&__row {
+		margin-top: 100px;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		height: 350px;
+	}
+	&__pic {
+		position: absolute;
+		left: 50%;
+		margin: -25px 0 0 -25px;
+		top: 0;
+
+		img {
+			width: 50px;
+		}
+	}
+	&__items {
+		background-color: $yellow_light;
+		width: 500%;
+		display: flex;
+		text-align: center;
+		input {
+			position: absolute;
+			visibility: hidden;
+		}
+		&-item {
+			width: 20%;
+			padding: 40px 20px 20px 20px;
+			transition: 1s ease;
+		}
+	}
+	#s1:checked ~ .s1 {
+		margin-left: 0;
+	}
+	#s2:checked ~ .s1 {
+		margin-left: -20%;
+	}
+	#s3:checked ~ .s1 {
+		margin-left: -40%;
+	}
+	#s4:checked ~ .s1 {
+		margin-left: -60%;
+	}
+}
+.slider-nav {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 15px;
+	background-color: $yellow_light;
+
+	&-item {
+		width: 15px;
+		height: 15px;
+		margin-right: 3px;
+		border-radius: 100%;
+		border: 2px solid $yellow;
+		cursor: pointer;
+		transition: all 0.5s ease;
+		&:hover {
+			background-color: $yellow;
+		}
+	}
+}
+/* Quotes styles end*/
+
+/* Form styles start*/
+.form {
+	background-color: $yellow_dark;
+
+	&__container {
+		max-width: 1370px;
+		box-sizing: content-box;
+		padding: 0 15px;
+		margin: 0 auto;
+	}
+
+	&__row {
+		display: flex;
+		padding: 100px 0 100px 0;
+		justify-content: space-between;
+	}
+
+	&__title {
+		color: $white;
+		font-weight: 600;
+		// font-size: 40px;
+		@include adaptiv-font(40, 26);
+
+		line-height: 1;
+		margin-bottom: 50px;
+	}
+
+	&__subtitle {
+		color: $white;
+		font-weight: 600;
+		// font-size: 30px;
+		@include adaptiv-font(30, 20);
+
+		line-height: 1;
+	}
+
+	&__body {
+	}
+
+	&__content {
+		max-width: 800px;
+	}
+}
+.queue {
+	&__form {
+		background-color: $white;
+		color: $green_dark;
+		border-radius: 15px;
+		max-width: 500px;
+		padding: 20px;
+	}
+}
+.form-queue {
+	&__group {
+	}
+
+	&__group-button {
+		display: block;
+		border: none;
+		color: $grey;
+		border-radius: 8px;
+		font-weight: 600;
+		font-size: 18px;
+		height: 50px;
+		width: 250px;
+		text-align: center;
+		margin: 0 auto;
+		background: linear-gradient($yellow_dark 0 0) var(--p, 0) / var(--p, 0)
+			no-repeat;
+		transition: 0.3s, background-position 0s;
+		&:hover {
+			--p: 100%;
+			color: $white;
+		}
+	}
+
+	&__group-input {
+		display: flex;
+		flex-direction: column;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+}
+.name-group {
+	&__label {
+	}
+
+	&__field {
+	}
+}
+.field-label {
+	font-weight: 600;
+	color: $grey;
+	font-size: 18px;
+}
+.input-field {
+	border: none;
+	background-color: $yellow_light;
+	border-radius: 8px;
+	height: 40px;
+	padding: 0 20px;
+}
+
+.phone-group {
+	&__label {
+	}
+}
+.phone {
+	&__field {
+	}
+}
+.museum-group {
+	&__title {
+		font-weight: 600;
+		color: $grey;
+		font-size: 18px;
+	}
+
+	&__select-box {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__options-container {
+		background: $yellow_light;
+		margin-top: 3px;
+		max-height: 0;
+		width: 100%;
+		opacity: 0;
+		transition: all 0.4s;
+		border-radius: 8px;
+		overflow: hidden;
+		order: 1;
+
+		&::-webkit-scrollbar {
+			width: 8px;
+			background-color: $grey;
+			border-radius: 0 8px 8px 0;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $green_dark;
+			border-radius: 0 8px 8px 0;
+		}
+
+		&.active {
+			max-height: 240px;
+			opacity: 1;
+			overflow: auto;
+
+			& + .museum-group__selected {
+				&::after {
+					background: url('/img/arrow-up.png');
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-repeat: no-repeat;
+					position: absolute;
+					height: 100%;
+					width: 20px;
+				}
+			}
+		}
+	}
+
+	&__option,
+	&__selected {
+		padding: 12px 24px;
+		cursor: pointer;
+	}
+
+	&__option {
+		&:hover {
+			background-color: $grey_light;
+			color: $white;
+		}
+	}
+
+	&__radio {
+		display: none;
+	}
+
+	&__label {
+		cursor: pointer;
+	}
+
+	&__selected {
+		background-color: $yellow_light;
+		border-radius: 8px;
+		min-height: 40px;
+		position: relative;
+		order: 0;
+		margin-bottom: 15px;
+		&::after {
+			content: '';
+			background: url('/img/arrow-down.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: absolute;
+			height: 100%;
+			width: 20px;
+			right: 20px;
+			top: 33%;
+			transition: all 0.4s;
+		}
+	}
+}
+.time-group {
+	&__label {
+	}
+
+	&__field {
+	}
+}
+/* Form styles end*/
+
+/* Footer styles start */
+.footer {
+	&__body {
+		background-color: $green_dark;
+		color: $grey;
+		max-width: 100%;
+		padding-top: 48px;
+		padding-bottom: 48px;
+		text-align: center;
+	}
+
+	&__logo_pic {
+		transition: 1s;
+		&:hover {
+			transform: rotateZ(180deg);
+		}
+	}
+	&__header {
+		margin-bottom: 41px;
+	}
+
+	&__nav {
+		max-width: 260px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__link {
+	}
+
+	&__copyright {
+	}
+}
+/* Footer styles end */
+
+/* Media */
+@media (max-width: 1170px) {
+	.queue__form {
+		max-width: 400px;
+	}
+	.form__row {
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 50px 0;
+	}
+
+	.form__content {
+		text-align: center;
+	}
+
+	.form__subtitle {
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 996px) {
+	.bio__row {
+		flex-wrap: wrap;
+		flex-direction: column;
+		padding: 50px 0 !important;
+		align-items: center;
+	}
+
+	.bio__column_title {
+		margin-bottom: 40px;
+		&::after {
+			width: 100% !important;
+			bottom: -20px !important;
+		}
+	}
+
+	.bio__column_subtitle {
+		text-align: center !important;
+	}
+
+	.life__row {
+		flex-direction: column;
+		align-items: center;
+		padding: 80px 0 !important;
+	}
+
+	.life__column_t::before {
+		top: -20px;
+		width: 100%;
+	}
+
+	.life__column_t-text {
+		padding: 0;
+		text-align: center;
+	}
+
+	.sunflower__row {
+		grid-template: repeat(4, 500px) / repeat(2, 1fr) !important;
+		grid-template-areas:
+			'lg-1 lg-1'
+			'sm-2 sm-3'
+			'sm-4 sm-5 '
+			'lg-2 lg-2' !important;
+	}
+	.facts {
+		&__row {
+			grid-template-areas:
+				'title title'
+				'life teo'
+				'death legacy';
+			text-align: center;
+		}
+	}
+
+	.form__title {
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.intro__row {
+		max-width: 300px !important;
+	}
+
+	.sunflower__row {
+		padding: 0 25px;
+		grid-template: repeat(4, 500px) / 1fr !important;
+		grid-template-areas:
+			'sm-2'
+			'sm-3'
+			'sm-4'
+			'sm-5' !important;
+	}
+
+	.facts__row {
+		grid-template-areas:
+			'title'
+			'life'
+			' teo'
+			'death '
+			'legacy';
+	}
+
+	.slider__items-item {
+	}
+}
