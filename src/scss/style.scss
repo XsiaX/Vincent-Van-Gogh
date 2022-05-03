@@ -810,7 +810,6 @@ $maxWidth: 1440;
 	border-radius: 8px;
 	height: 40px;
 	padding: 0 20px;
-	margin: 0 auto;
 }
 
 .museum-group {
@@ -908,6 +907,7 @@ $maxWidth: 1440;
 		}
 	}
 }
+
 /* Form styles end*/
 
 /* Footer styles start */
@@ -1047,5 +1047,15 @@ $maxWidth: 1440;
 			' teo'
 			'death '
 			'legacy';
+	}
+
+	.time-group {
+		&__field {
+			margin: 0 auto;
+		}
+
+		&__label {
+			margin: 0 auto;
+		}
 	}
 }
