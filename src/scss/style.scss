@@ -752,7 +752,6 @@ $maxWidth: 1440;
 		display: flex;
 		padding: 100px 0 100px 0;
 		justify-content: space-between;
-		// text-align: justify;
 	}
 
 	&__title {
@@ -761,6 +760,8 @@ $maxWidth: 1440;
 		@include adaptiv-font(40, 26);
 		line-height: 1;
 		margin-bottom: 50px;
+		// text-align: justify;
+		text-align: center;
 	}
 
 	&__subtitle {
@@ -768,6 +769,7 @@ $maxWidth: 1440;
 		font-weight: 600;
 		@include adaptiv-font(30, 20);
 		line-height: 1;
+		text-align: center;
 	}
 
 	&__content {
@@ -976,10 +978,6 @@ $maxWidth: 1440;
 		padding: 50px 0;
 	}
 
-	.form__content {
-		text-align: center;
-	}
-
 	.form__subtitle {
 		margin-bottom: 20px;
 	}
@@ -1001,10 +999,6 @@ $maxWidth: 1440;
 		}
 	}
 
-	.bio__column_subtitle {
-		text-align: center !important;
-	}
-
 	.life__row {
 		flex-direction: column;
 		align-items: center;
@@ -1018,7 +1012,6 @@ $maxWidth: 1440;
 
 	.life__column_t-text {
 		padding: 0;
-		text-align: center;
 	}
 
 	.sunflower__row {
@@ -1035,7 +1028,6 @@ $maxWidth: 1440;
 				'title title'
 				'life teo'
 				'death legacy';
-			text-align: center;
 		}
 	}
 
@@ -1068,7 +1060,16 @@ $maxWidth: 1440;
 			'death '
 			'legacy';
 	}
+	.facts_pic {
+		img {
+			margin: 0 auto;
+			display: block;
+		}
+	}
 
+	.facts_title {
+		text-align: center;
+	}
 	.form__title {
 		font-weight: 400;
 	}
