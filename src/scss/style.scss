@@ -5,6 +5,7 @@
 // Palette
 @import '_palette.scss';
 
+// Mixins
 $maxWidth: 1440;
 
 @mixin adaptiv-font($pcSize, $mobSize) {
@@ -20,7 +21,8 @@ $maxWidth: 1440;
 		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
 	}
 }
-// Шаблоны
+
+// Templates
 %animShow {
 	opacity: 0;
 	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 70, 0, 1);
@@ -48,7 +50,7 @@ $maxWidth: 1440;
 	.intro {
 		&__container {
 			min-height: 100vh;
-			background: url('/img/intro_bg.jpg') no-repeat;
+			background: url('../img/intro_bg.jpg') no-repeat;
 			background-size: cover;
 			background-attachment: fixed;
 			box-sizing: content-box;
@@ -76,8 +78,7 @@ $maxWidth: 1440;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			// margin-left: auto;
-			// margin-right: auto;
+
 			text-align: center;
 			color: $white;
 			z-index: 2;
@@ -118,9 +119,6 @@ $maxWidth: 1440;
 		}
 
 		&__column {
-			&_t {
-			}
-
 			&_title {
 				text-align: right;
 				font-size: 28px;
@@ -138,12 +136,8 @@ $maxWidth: 1440;
 				}
 			}
 
-			&_s {
-			}
-
 			&_subtitle {
 				@include adaptiv-font(18, 16);
-
 				max-width: 700px;
 				text-align: left;
 				margin: 0 0 20px 0;
@@ -186,9 +180,6 @@ $maxWidth: 1440;
 
 	/* Sunflower styles start*/
 	.sunflower {
-		&__container {
-		}
-
 		&__row {
 			display: grid;
 			grid-template: repeat(2, 500px) / repeat(4, 1fr);
@@ -570,8 +561,6 @@ $maxWidth: 1440;
 					left: 0;
 					top: 0;
 					object-fit: cover;
-					// box-sizing: content-box;
-					// padding: 0 15px;
 				}
 			}
 		}
@@ -582,7 +571,6 @@ $maxWidth: 1440;
 /* Facts styles start*/
 .facts {
 	min-height: 700px;
-
 	position: relative;
 	display: flex;
 	&_pic {
@@ -607,7 +595,6 @@ $maxWidth: 1440;
 		color: $white;
 		margin: 35px 35px;
 		display: grid;
-
 		background-color: $black_light;
 		grid-template: repeat(2, minmax(250px, 400)) / repeat(
 				4,
@@ -626,7 +613,6 @@ $maxWidth: 1440;
 		display: flex;
 		grid-area: title;
 		@include adaptiv-font(50, 30);
-
 		line-height: 1;
 		text-align: center;
 		align-items: center;
@@ -636,31 +622,19 @@ $maxWidth: 1440;
 	&__life {
 		grid-area: life;
 		padding-top: 15px;
-
-		&-subtitle {
-		}
 	}
 
 	&__teo {
 		grid-area: teo;
 		padding-top: 15px;
-
-		&-subtitle {
-		}
 	}
 
 	&__death {
 		grid-area: death;
-
-		&-subtitle {
-		}
 	}
 
 	&__legacy {
 		grid-area: legacy;
-
-		&-subtitle {
-		}
 	}
 }
 .video {
@@ -680,7 +654,6 @@ $maxWidth: 1440;
 .slider {
 	display: flex;
 	justify-content: center;
-
 	&__container {
 		position: relative;
 		max-width: 600px;
@@ -737,7 +710,6 @@ $maxWidth: 1440;
 	justify-content: center;
 	padding-bottom: 15px;
 	background-color: $yellow_light;
-
 	&-item {
 		width: 15px;
 		height: 15px;
@@ -756,7 +728,6 @@ $maxWidth: 1440;
 /* Form styles start*/
 .form {
 	background-color: $yellow_dark;
-
 	&__container {
 		max-width: 1370px;
 		box-sizing: content-box;
@@ -773,9 +744,7 @@ $maxWidth: 1440;
 	&__title {
 		color: $white;
 		font-weight: 600;
-		// font-size: 40px;
 		@include adaptiv-font(40, 26);
-
 		line-height: 1;
 		margin-bottom: 50px;
 	}
@@ -783,13 +752,8 @@ $maxWidth: 1440;
 	&__subtitle {
 		color: $white;
 		font-weight: 600;
-		// font-size: 30px;
 		@include adaptiv-font(30, 20);
-
 		line-height: 1;
-	}
-
-	&__body {
 	}
 
 	&__content {
@@ -806,9 +770,6 @@ $maxWidth: 1440;
 	}
 }
 .form-queue {
-	&__group {
-	}
-
 	&__group-button {
 		display: block;
 		border: none;
@@ -837,13 +798,7 @@ $maxWidth: 1440;
 		}
 	}
 }
-.name-group {
-	&__label {
-	}
 
-	&__field {
-	}
-}
 .field-label {
 	font-weight: 600;
 	color: $grey;
@@ -857,14 +812,6 @@ $maxWidth: 1440;
 	padding: 0 20px;
 }
 
-.phone-group {
-	&__label {
-	}
-}
-.phone {
-	&__field {
-	}
-}
 .museum-group {
 	&__title {
 		font-weight: 600;
@@ -906,7 +853,7 @@ $maxWidth: 1440;
 
 			& + .museum-group__selected {
 				&::after {
-					background: url('/img/arrow-up.png');
+					background: url('../img/arrow-up.png');
 					background-repeat: no-repeat;
 					background-size: contain;
 					background-repeat: no-repeat;
@@ -948,7 +895,7 @@ $maxWidth: 1440;
 		margin-bottom: 15px;
 		&::after {
 			content: '';
-			background: url('/img/arrow-down.png');
+			background: url('../img/arrow-down.png');
 			background-size: contain;
 			background-repeat: no-repeat;
 			position: absolute;
@@ -958,13 +905,6 @@ $maxWidth: 1440;
 			top: 33%;
 			transition: all 0.4s;
 		}
-	}
-}
-.time-group {
-	&__label {
-	}
-
-	&__field {
 	}
 }
 /* Form styles end*/
@@ -1001,12 +941,6 @@ $maxWidth: 1440;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-	}
-
-	&__link {
-	}
-
-	&__copyright {
 	}
 }
 /* Footer styles end */
@@ -1112,8 +1046,5 @@ $maxWidth: 1440;
 			' teo'
 			'death '
 			'legacy';
-	}
-
-	.slider__items-item {
 	}
 }
