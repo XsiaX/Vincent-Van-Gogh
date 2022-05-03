@@ -907,156 +907,151 @@ $maxWidth: 1440;
 		}
 	}
 }
-
-/* Form styles end*/
-
-/* Footer styles start */
-.footer {
-	&__body {
-		background-color: $green_dark;
-		color: $grey;
-		max-width: 100%;
-		padding-top: 48px;
-		padding-bottom: 48px;
-		text-align: center;
-	}
-
-	&__logo_pic {
-		transition: 1s;
-		&:hover {
-			transform: rotateZ(180deg);
-		}
-	}
-	&__header {
-		margin-bottom: 41px;
-	}
-
-	&__nav {
-		max-width: 260px;
+.time-group {
+	&__field {
 		margin: 0 auto;
-		margin-bottom: 30px;
-	}
-
-	&__list {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-	}
-}
-/* Footer styles end */
-
-/* Media */
-@media (max-width: 1170px) {
-	.queue__form {
-		max-width: 400px;
-	}
-	.form__row {
-		flex-wrap: wrap;
-		justify-content: center;
-		padding: 50px 0;
-	}
-
-	.form__content {
-		text-align: center;
-	}
-
-	.form__subtitle {
-		margin-bottom: 20px;
-	}
-}
-
-@media (max-width: 996px) {
-	.bio__row {
-		flex-wrap: wrap;
-		flex-direction: column;
-		padding: 50px 0 !important;
-		align-items: center;
-	}
-
-	.bio__column_title {
-		margin-bottom: 40px;
-		&::after {
-			width: 100% !important;
-			bottom: -20px !important;
-		}
-	}
-
-	.bio__column_subtitle {
-		text-align: center !important;
-	}
-
-	.life__row {
-		flex-direction: column;
-		align-items: center;
-		padding: 80px 0 !important;
-	}
-
-	.life__column_t::before {
-		top: -20px;
 		width: 100%;
 	}
 
-	.life__column_t-text {
-		padding: 0;
-		text-align: center;
-	}
+	/* Form styles end*/
 
-	.sunflower__row {
-		grid-template: repeat(4, 500px) / repeat(2, 1fr) !important;
-		grid-template-areas:
-			'lg-1 lg-1'
-			'sm-2 sm-3'
-			'sm-4 sm-5 '
-			'lg-2 lg-2' !important;
-	}
-	.facts {
-		&__row {
-			grid-template-areas:
-				'title title'
-				'life teo'
-				'death legacy';
+	/* Footer styles start */
+	.footer {
+		&__body {
+			background-color: $green_dark;
+			color: $grey;
+			max-width: 100%;
+			padding-top: 48px;
+			padding-bottom: 48px;
 			text-align: center;
+		}
+
+		&__logo_pic {
+			transition: 1s;
+			&:hover {
+				transform: rotateZ(180deg);
+			}
+		}
+		&__header {
+			margin-bottom: 41px;
+		}
+
+		&__nav {
+			max-width: 260px;
+			margin: 0 auto;
+			margin-bottom: 30px;
+		}
+
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+	/* Footer styles end */
+
+	/* Media */
+	@media (max-width: 1170px) {
+		.queue__form {
+			max-width: 400px;
+		}
+		.form__row {
+			flex-wrap: wrap;
+			justify-content: center;
+			padding: 50px 0;
+		}
+
+		.form__content {
+			text-align: center;
+		}
+
+		.form__subtitle {
+			margin-bottom: 20px;
 		}
 	}
 
-	.form__title {
-		margin-bottom: 20px;
-	}
-}
+	@media (max-width: 996px) {
+		.bio__row {
+			flex-wrap: wrap;
+			flex-direction: column;
+			padding: 50px 0 !important;
+			align-items: center;
+		}
 
-@media (max-width: 560px) {
-	.intro__row {
-		max-width: 300px !important;
-	}
+		.bio__column_title {
+			margin-bottom: 40px;
+			&::after {
+				width: 100% !important;
+				bottom: -20px !important;
+			}
+		}
 
-	.sunflower__row {
-		padding: 0 25px;
-		grid-template: repeat(4, 500px) / 1fr !important;
-		grid-template-areas:
-			'sm-2'
-			'sm-3'
-			'sm-4'
-			'sm-5' !important;
-	}
+		.bio__column_subtitle {
+			text-align: center !important;
+		}
 
-	.facts__row {
-		grid-template-areas:
-			'title'
-			'life'
-			' teo'
-			'death '
-			'legacy';
-	}
+		.life__row {
+			flex-direction: column;
+			align-items: center;
+			padding: 80px 0 !important;
+		}
 
-	.time-group {
-		&__field {
-			margin: 0 auto;
+		.life__column_t::before {
+			top: -20px;
 			width: 100%;
 		}
 
-		// &__label {
-		// 	margin: 0 auto;
-		// }
+		.life__column_t-text {
+			padding: 0;
+			text-align: center;
+		}
+
+		.sunflower__row {
+			grid-template: repeat(4, 500px) / repeat(2, 1fr) !important;
+			grid-template-areas:
+				'lg-1 lg-1'
+				'sm-2 sm-3'
+				'sm-4 sm-5 '
+				'lg-2 lg-2' !important;
+		}
+		.facts {
+			&__row {
+				grid-template-areas:
+					'title title'
+					'life teo'
+					'death legacy';
+				text-align: center;
+			}
+		}
+
+		.form__title {
+			margin-bottom: 20px;
+		}
 	}
+
+	@media (max-width: 560px) {
+		.intro__row {
+			max-width: 300px !important;
+		}
+
+		.sunflower__row {
+			padding: 0 25px;
+			grid-template: repeat(4, 500px) / 1fr !important;
+			grid-template-areas:
+				'sm-2'
+				'sm-3'
+				'sm-4'
+				'sm-5' !important;
+		}
+
+		.facts__row {
+			grid-template-areas:
+				'title'
+				'life'
+				' teo'
+				'death '
+				'legacy';
+		}
+
 }
