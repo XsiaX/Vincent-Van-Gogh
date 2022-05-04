@@ -41,6 +41,19 @@ $maxWidth: 1440;
 	flex-direction: column;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
+.simplebar-scrollbar {
+	background-color: $grey;
+	border-radius: 0 8px 8px 0;
+	&::before {
+		background-color: $grey;
+	}
+}
+
+.simplebar-track {
+	width: 8px !important;
+	background-color: $green_dark;
+	border-radius: 0 8px 8px 0;
+}
 .main {
 	flex: 1 1 auto;
 	color: $text;
@@ -851,16 +864,9 @@ $maxWidth: 1440;
 		border-radius: 8px;
 		overflow: hidden;
 		order: 1;
-
+		scrollbar-width: none;
 		&::-webkit-scrollbar {
-			width: 8px;
-			background-color: $grey;
-			border-radius: 0 8px 8px 0;
-		}
-
-		&::-webkit-scrollbar-thumb {
-			background-color: $green_dark;
-			border-radius: 0 8px 8px 0;
+			display: none;
 		}
 
 		&.active {

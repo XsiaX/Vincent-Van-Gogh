@@ -38,7 +38,10 @@
 		<!-- Favicons -->
 
 		<!-- Launching CSS -->
-
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+		/>
 		<link rel="stylesheet" href="css/style.css" />
 
 		<!-- Charset -->
@@ -332,6 +335,7 @@
 											Ваше имя
 										</label>
 										<input
+											required
 											type="text"
 											name="customerName"
 											id="nameInput"
@@ -349,6 +353,7 @@
 											Ваш телефон
 										</label>
 										<input
+											required
 											type="tel"
 											name="customerPhone"
 											data-tel-input=""
@@ -366,7 +371,11 @@
 										</h3>
 
 										<div class="museum-group__select-box">
-											<div class="museum-group__options-container">
+											<div
+												class="museum-group__options-container"
+												data-simplebar
+												data-simplebar-auto-hide="false"
+											>
 												<div class="museum-group__option">
 													<input
 														type="radio"
@@ -582,6 +591,7 @@
 		</div>
 
 		<!-- Scripts -->
+		<script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 		<script src="js/main.js"></script>
 		<!-- Scripts -->
 	</body>
