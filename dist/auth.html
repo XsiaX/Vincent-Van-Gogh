@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Авторизация</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/icon-16x16.png">
+    <link rel="manifest" href="./assets/img/icon/site.webmanifest">
+    <link rel="mask-icon" href="./assets/img/icon/safari-pinned-tab.svg" color="#00aba9">
+    <link rel="shortcut icon" href="./assets/img/icon/favicon.ico">
+  <script defer="defer" src="runtime.js"></script><script defer="defer" src="vendors-node_modules_babel_polyfill_lib_index_js.js"></script><script defer="defer" src="auth.js"></script><link href="auth.css" rel="stylesheet"></head>
+  <body>
+    <div class="form">
+      <div class="container">
+        <div class="wrapper">
+          <div class="wrap"></div>
+        </div>
+
+        <form class="form-auth" method="post" action="./php/auth.php">
+          <div class="form__title">Авторизация оператора</div>
+          <label for="login" class="form__login-title title">Логин:</label>
+          <input type="text" class="form__login input js-input" id="login" name="operatorLogin">
+          <div class="errors"></div>
+          <label for="pass" class="form__pass-title title">Пароль:</label>
+          <input type="text" class="form__pass input js-input" id="pass" name="operatorPassword" id="operatorPassword">
+          <div class="errors"></div>
+          <input type="submit" class="form__btn" value="Войти">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

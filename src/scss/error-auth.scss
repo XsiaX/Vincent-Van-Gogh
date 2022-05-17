@@ -1,0 +1,21 @@
+.wrapper {
+}
+.container {
+  max-width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  background: url("../assets/img/css-backgrounds/auth_bg.jpg");
+}
+.row {
+  padding: 30px 25px;
+}
+
+.message {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.back {
+  height: 35px;
+  border-radius: 8px;
+}
