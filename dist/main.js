@@ -22,7 +22,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/scss/style.scss */ "./scss/style.scss");
 
-console.log("Hellooooooo.......");
 var animItems = document.querySelectorAll("._anim-items");
 
 if (animItems.length > 0) {
@@ -84,6 +83,7 @@ optionsList.forEach(function (o) {
 var form = document.querySelector(".js-form"),
     formInputs = document.querySelectorAll(".js-input"),
     inputPhone = document.querySelector(".js-input-phone"),
+    inputName = document.querySelector(".js-input-name"),
     emptyImputs = Array.from(formInputs).filter(function (input) {
   return input.value === "";
 }),
@@ -94,11 +94,16 @@ var validatePhone = function validatePhone(phone) {
   return re.test(String(phone));
 };
 
+var validateName = function validateName(name) {
+  var reg = /^['A-Za-z\u0410-\u044F][ '\x2DA-Za-z\u0410-\u044F]+['A-Za-z\u0410-\u044F]?$/;
+  return reg.test(String(name));
+};
+
 form.addEventListener("submit", function (e) {
   e.preventDefault(); // Таймер обратного отсчета
 
   var timer;
-  var x = 30; // стартовое значение обратного отсчета
+  var x = 5; // стартовое значение обратного отсчета
 
   function countdown() {
     document.querySelector(".time").innerHTML = "\u041C\u044B \u043F\u0435\u0440\u0435\u0437\u0432\u043E\u043D\u0438\u043C \u0412\u0430\u043C \u0447\u0435\u0440\u0435\u0437 ".concat(x, " \u0441\u0435\u043A\u0443\u043D\u0434. <br/>\u041D\u0435 \u043F\u043E\u043A\u0438\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443");
@@ -106,12 +111,15 @@ form.addEventListener("submit", function (e) {
 
     if (x < 0) {
       clearTimeout(timer); // таймер остановится на нуле
+
+      alert("Мы Вам уже звоним..");
     } else {
       timer = setTimeout(countdown, 1000);
     }
   }
 
   var phoneVal = inputPhone.value;
+  var nameVal = inputName.value;
   formInputs.forEach(function (input) {
     if (input.value === "") {
       input.classList.add("error");
@@ -122,18 +130,53 @@ form.addEventListener("submit", function (e) {
     }
   });
 
+  if (!validateName(nameVal)) {
+    inputName.classList.add("error");
+    inputName.nextElementSibling.textContent = "Введите верное имя";
+  }
+
   if (!validatePhone(phoneVal)) {
     inputPhone.classList.add("error");
     inputPhone.nextElementSibling.textContent = "Введите верный телефон";
-  } else {
+  }
+
+  if (validateName(nameVal) && validatePhone(phoneVal)) {
+    inputName.classList.remove("error");
+    inputName.nextElementSibling.textContent = "";
     inputPhone.classList.remove("error");
     inputPhone.nextElementSibling.textContent = "";
     countdown();
     setTimeout(function () {
       form.submit();
       form.reset();
-    }, 31000);
+    }, 6000);
   }
+}); //Анимированный курсор
+
+document.addEventListener("DOMContentLoaded", function () {
+  var followCursor = function followCursor() {
+    // объявляем функцию followCursor
+    var el = document.querySelector(".follow-cursor"); // ищем элемент, который будет следовать за курсором
+
+    window.addEventListener("mousemove", function (e) {
+      var target = e.target; // определяем, где находится курсор
+
+      if (!target) return;
+
+      if (target.closest("a")) {
+        // если курсор наведён на ссылку
+        el.classList.add("follow-cursor_active"); // элементу добавляем активный класс
+      } else {
+        el.classList.remove("follow-cursor_active"); // удаляем активный класс
+      }
+
+      el.style.left = e.pageX + "px"; // задаём элементу позиционирование слева
+
+      el.style.top = e.pageY + "px"; // задаём элементу позиционирование сверху
+    });
+  };
+
+  followCursor();
 });
 
 /***/ })

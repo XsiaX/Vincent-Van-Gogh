@@ -501,6 +501,10 @@ button {
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 }
 
+body {
+  cursor: none !important;
+}
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
@@ -637,7 +641,6 @@ button {
   background-size: 400%;
   border-radius: 20px;
   color: #fff;
-  cursor: pointer;
   border: none;
   height: 65px;
   width: 100%;
@@ -1166,7 +1169,6 @@ button {
   margin-right: 3px;
   border-radius: 100%;
   border: 2px solid #d2d117;
-  cursor: pointer;
   transition: all 0.5s ease;
 }
 .slider-nav-item:hover {
@@ -1323,7 +1325,6 @@ button {
 }
 .museum-group__option, .museum-group__selected {
   padding: 12px 24px;
-  cursor: pointer;
 }
 .museum-group__option:hover {
   background-color: rgba(146, 146, 146, 0.5490196078);
@@ -1331,9 +1332,6 @@ button {
 }
 .museum-group__radio {
   display: none;
-}
-.museum-group__label {
-  cursor: pointer;
 }
 .museum-group__selected {
   background-color: rgba(218, 215, 14, 0.2705882353);
@@ -1512,6 +1510,31 @@ button {
     background-color: #d2d117;
     color: #fff;
   }
+}
+/* Начальные стили для элемента, который будет следовать за курсором, в нашем случае небольшой кружок */
+.follow-cursor {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #0d6efd;
+  border-radius: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  /* центрируем кружок */
+  position: absolute;
+  /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
+  z-index: 999;
+  /* чтобы элемент был над остальными элементами */
+  pointer-events: none;
+  /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
+  transition: width 0.64s, height 0.64s, border-radius 0.64s, background 0.64s;
+}
+
+/* Активный класс для кружка при наведении на ссылку */
+.follow-cursor_active {
+  height: 128px;
+  width: 128px;
+  border-width: 2px;
+  background: rgba(13, 110, 253, 0.32);
 }
 
 /*# sourceMappingURL=main.css.map*/

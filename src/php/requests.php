@@ -110,6 +110,29 @@ if (!empty($_SESSION['operator'])) {
     .adapter {
       visibility: hidden;
     }
+
+    .exit-btn {
+      margin-top: 20px !important;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      font-size: 24px;
+      color: #CFD1DF;
+      background-image: linear-gradient(#7F5D85, #7F5D85);
+      width: 200px;
+      margin: 0 auto;
+      border-radius: 8px;
+      padding: 5px;
+      height: 35px;
+      transition: 0.3s;
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+    }
+
+    .exit-btn:hover {
+      color: #CFD1DF;
+      background-size: 100% 100%;
+    }
   </style>
 </head>
 
@@ -119,60 +142,68 @@ if (!empty($_SESSION['operator'])) {
       <div class="students__container _container">
         <div class="title">Клиентская база</div>
         <div class="learn-table">
-          <table>
-            <tr>
-              <th>ID</th>
-              <th>Имя</th>
-              <th>Музей</th>
-              <th>Дата</th>
-              <th>Статус</th>
-              <th>Обработать</th>
-              <th>Закрыть</th>
-            </tr>
-            <?php
+          <form action="./status.php" method="post">
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Музей</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Обработать</th>
+                <th>Закрыть</th>
+              </tr>
+              <?php
 
-            if (mysqli_num_rows($check_clients) > 0) {
-              $clients_data = array();
+              if (mysqli_num_rows($check_clients) > 0) {
+                $clients_data = array();
 
-              while ($client = mysqli_fetch_assoc($check_clients)) {
-                $clients_data[] = $client;
-              }
-
-              foreach ($clients_data as $clients_number => $clients_array) {
-                echo "<tr>";
-                foreach ($clients_array as $clients_property => $clients_value) {
-
-                  if ($clients_property) {
-
-                    if ($clients_property == 'id') {
-                      echo "<td class='clients__id'>" . $clients_value . "</td>";
-                    };
-
-                    if ($clients_property == 'name') {
-                      echo "<td class='clients__name'>" . $clients_value . "</td>";
-                    };
-
-                    if ($clients_property == 'museum') {
-                      echo "<td class='clients__museum'>" . $clients_value . "</td>";
-                    };
-
-                    if ($clients_property == 'date') {
-                      echo "<td class='clients__date'>" . $clients_value . "</td>";
-                    }
-
-                    if ($clients_property == 'status') {
-                      echo "<td class='clients__status'>" . $clients_value . "</td>";
-                    }
-                  }
+                while ($client = mysqli_fetch_assoc($check_clients)) {
+                  $clients_data[] = $client;
                 }
 
-                echo "<td class='handle-button__parent'> <button class='handleBtn btn' name='btn'> Process </button> </td>";
-                echo "<td class='close-button__parent'> <button class='closeBtn btn ' name='btn'> Close </button> </td>";
-                echo "</tr>";
+                foreach ($clients_data as $clients_number => $clients_array) {
+                  echo "<tr class='table__row'>";
+                  foreach ($clients_array as $clients_property => $clients_value) {
+
+                    if ($clients_property) {
+
+                      if ($clients_property == 'id') {
+                        echo "<td class='clients__id'>" . "<input type='radio' style='visibility: hidden' name='identificator' id='identity' value='$clients_value' />" . "<label class='radio-label' for='identity'>" . $clients_value . "</label>" . "</td>";
+                      };
+
+                      if ($clients_property == 'name') {
+                        echo "<td class='clients__name'>" . $clients_value . "</td>";
+                      };
+
+                      if ($clients_property == 'phone') {
+                        echo "<td class='clients__phone'>" . $clients_value . "</td>";
+                      };
+
+                      if ($clients_property == 'museum') {
+                        echo "<td class='clients__museum'>" . $clients_value . "</td>";
+                      };
+
+                      if ($clients_property == 'date') {
+                        echo "<td class='clients__date'>" . $clients_value . "</td>";
+                      }
+
+                      if ($clients_property == 'status') {
+                        echo "<td class='clients__status'>" . "<input type='radio' style='visibility: hidden' name='status' id='status' value='$clients_value' />" . "<label class='radio-label' for='status'>" . $clients_value . "</label>" . "</td>";
+                      }
+                    }
+                  }
+
+                  echo "<td class='handle-button__parent'> <button class='handleBtn' type='submit' name='handleBtn'> Process </button> </td>";
+                  echo "<td class='close-button__parent'> <button class='closeBtn' type='submit' name='closeBtn'> Close </button> </td>";
+                  echo "</tr>";
+                }
               }
-            }
-            ?>
-          </table>
+              ?>
+            </table>
+          </form>
+          <a href="exit.php" class="exit-btn">Выйти</a>
         </div>
       </div>
     </main>
@@ -185,14 +216,19 @@ if (!empty($_SESSION['operator'])) {
 
     handleBtn.forEach((button) => {
       button.addEventListener("click", (e) => {
-        button.closest(".handle-button__parent").previousElementSibling.textContent = "INPROGRESS";
+        button.closest(".handle-button__parent").previousElementSibling.firstElementChild.checked = true;
+        button.closest(".handle-button__parent").previousElementSibling.firstElementChild.value = "INPROGRESS";
+        button.closest(".handle-button__parent").previousElementSibling.lastElementChild.textContent = "INPROGRESS";
+        button.closest(".table__row").firstElementChild.firstElementChild.checked = true;
       })
     })
 
-    closeBtn.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        button.closest(".close-button__parent").previousElementSibling.previousElementSibling.textContent = "CLOSED";
-        adapter.value = 10;
+    closeBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        btn.closest(".close-button__parent").previousElementSibling.previousElementSibling.firstElementChild.checked = true;
+        btn.closest(".close-button__parent").previousElementSibling.previousElementSibling.firstElementChild.value = "CLOSED";
+        btn.closest(".close-button__parent").previousElementSibling.previousElementSibling.lastElementChild.textContent = "CLOSED";
+        btn.closest(".table__row").firstElementChild.firstElementChild.checked = true;
       })
     })
   </script>
