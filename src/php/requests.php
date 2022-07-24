@@ -142,7 +142,7 @@ if (!empty($_SESSION['operator'])) {
       <div class="students__container _container">
         <div class="title">Клиентская база</div>
         <div class="learn-table">
-          <form action="./status.php" method="post">
+          <form action="status.php" method="post">
             <table>
               <tr>
                 <th>ID</th>

@@ -18,4 +18,4 @@ echo "$request_status";
 
 mysqli_close($connect);
 
-header('Location: ./requests.php');
+header('Location: requests.php');
