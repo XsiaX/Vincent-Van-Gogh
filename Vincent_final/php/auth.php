@@ -26,8 +26,8 @@ if (mysqli_num_rows($check_operator) > 0) {
 
   mysqli_close($connect);
 
-  header('Location: ./requests.php');
+  header('Location: requests.php');
 } else {
   $_SESSION['message'] = 'Логин или пароль неверен!';
-  header('Location: ./error-auth.php');
+  header('Location: error-auth.php');
 }
